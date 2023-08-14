@@ -2,9 +2,19 @@ import java.util.Scanner;
 abstract class binarySearch{
     public int[][] matrix;
     public int target;
+    public int row;
+    public int col;
     public binarySearch(int[][] matrix,int target){
         this.matrix=matrix;
         this.target=target;
+    }
+    public int getRow(){
+        row = matrix.length;
+        return row;
+    }
+    public int getCol(){
+        col = matrix[0].length;
+        return col;
     }
     public int[][] getMatrix(){
         return matrix;
@@ -27,8 +37,8 @@ class binaySearchA extends binarySearch{
     }
     @Override
     public boolean targetFound(){
-        int m = matrix.length;
-        int n = matrix[0].length;
+        int m = getRow();
+        int n = getCol();
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(matrix[i][j]==target){
@@ -45,8 +55,8 @@ class binarySearchB extends binarySearch{
     }
     @Override
     public boolean targetFound(){
-        int m = matrix.length;
-        int n = matrix[0].length;
+        int m = getRow();
+        int n = getCol();
         int low = 0;
         int high = m-1;
         while(low<=high){
@@ -89,8 +99,8 @@ class binarySearchC extends binarySearch{
     }
     @Override
     public boolean targetFound(){
-        int m = matrix.length;
-        int n= matrix[0].length;
+        int m = getRow();
+        int n= getCol();
         int i=m-1,j=0 ;
         while(i>=0 && j<n){
             if(target==matrix[i][j]){
